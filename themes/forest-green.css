@@ -1,0 +1,556 @@
+/* Forest Green */
+
+* {
+    font-family: "Inter", "Noto Sans", sans-serif;
+    color: #D5E6D8;
+    outline: none;
+}
+
+window,
+#sidebar-window,
+dialog,
+window.dialog-modal,
+#dialog-window {
+    background-color: #0B1511;
+    color: #D5E6D8;
+}
+
+#sidebar-window {
+    border-right: 1px solid rgba(85, 190, 125, 0.25);
+}
+
+#sidebar-root,
+#sidebar-inner {
+    background-color: transparent;
+}
+
+scrolledwindow scrollbar {
+    background-color: transparent;
+    border: none;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrolledwindow scrollbar slider {
+    background-color: rgba(85, 190, 125, 0.40);
+    border-radius: 3px;
+    min-width: 5px;
+    min-height: 28px;
+    border: none;
+}
+
+scrolledwindow scrollbar slider:hover {
+    background-color: rgba(85, 190, 125, 0.75);
+}
+
+scrolledwindow scrollbar trough {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    min-width: 6px;
+}
+
+#resize-grip {
+    background-color: transparent;
+}
+
+#resize-grip:hover {
+    background-color: rgba(85, 190, 125, 0.50);
+}
+
+#resize-grip:active {
+    background-color: #55BE7D;
+}
+
+#header-box {
+    background-color: #11231A;
+    background-image: linear-gradient(to bottom, #173323, #0B1511);
+    border-radius: 0 0 8px 8px;
+    padding: 4px 0 8px 0;
+}
+
+#logo-label,
+#logo-x {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+#logo-x {
+    color: #69D394;
+    margin-left: 1px;
+}
+
+#customize-button {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    padding: 4px;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 6px;
+}
+
+#customize-button:hover {
+    background-color: rgba(85, 190, 125, 0.16);
+}
+
+#customize-button image {
+    color: #69D394;
+}
+
+#customize-button:hover image {
+    color: #9BE8B5;
+}
+
+#close-btn {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 6px;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+#close-btn:hover {
+    color: #FF6B6B;
+    background-color: rgba(255, 107, 107, 0.15);
+}
+
+#close-btn:active {
+    background-color: rgba(255, 107, 107, 0.30);
+}
+
+#section-sep {
+    background-color: transparent;
+    background-image: none;
+    min-height: 0;
+    margin: 0;
+    border: none;
+}
+
+#app-btn {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+#app-btn:hover {
+    background-color: rgba(85, 190, 125, 0.16);
+}
+
+#app-btn:active {
+    background-color: rgba(85, 190, 125, 0.30);
+}
+
+#app-icon {
+    color: #69D394;
+    font-size: 18px;
+    min-width: 28px;
+}
+
+#app-label {
+    color: #D5E6D8;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#calendar-box,
+#WeatherSidebar,
+#news-widget {
+    background-color: #11231A;
+    border: 1px solid rgba(85, 190, 125, 0.30);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 4px 0;
+}
+
+#calendar-header {
+    background-color: transparent;
+    padding: 2px 0 5px 0;
+}
+
+#calendar-month {
+    color: #DDEBE0;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#calendar-nav-btn,
+#news-refresh-btn,
+#news-more-link {
+    background-color: #17251D;
+    background-image: none;
+    border: 1px solid rgba(85, 190, 125, 0.35);
+    border-radius: 5px;
+    color: #8BE0A8;
+    padding: 3px 6px;
+}
+
+#calendar-nav-btn {
+    font-size: 11px;
+    min-width: 22px;
+    min-height: 20px;
+    padding: 0;
+}
+
+#calendar-nav-btn:hover,
+#news-refresh-btn:hover,
+#news-more-link:hover {
+    background-color: rgba(85, 190, 125, 0.20);
+    border-color: #55BE7D;
+}
+
+#calendar-widget {
+    background-color: #14251C;
+    color: #D5E6D8;
+    border: 1px solid rgba(85, 190, 125, 0.25);
+    border-radius: 6px;
+    padding: 3px;
+}
+
+#calendar-widget > grid > label {
+    color: #B8CDBD;
+    font-size: 9px;
+    padding: 2px;
+}
+
+#calendar-widget:selected {
+    background-color: #318B55;
+    color: #FFFFFF;
+    border-radius: 3px;
+}
+
+#calendar-widget:indeterminate {
+    color: #718378;
+}
+
+#calendar-today-label {
+    color: #8BE0A8;
+    font-size: 9px;
+    padding-top: 2px;
+}
+
+#weather-header,
+#news-header,
+#news-list,
+#news-scroll {
+    background-color: transparent;
+}
+
+#WeatherSidebar button {
+    background-color: rgba(85, 190, 125, 0.15);
+    background-image: none;
+    border: 1px solid rgba(85, 190, 125, 0.35);
+    border-radius: 6px;
+    color: #69D394;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+}
+
+#WeatherSidebar button:hover {
+    background-color: rgba(85, 190, 125, 0.30);
+    color: #FFFFFF;
+}
+
+#WeatherSidebar button:active {
+    background-color: rgba(85, 190, 125, 0.50);
+}
+
+#location-label {
+    color: #E0ECE3;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#condition-label {
+    color: #D5E6D8;
+    font-size: 13px;
+}
+
+#weather-emoji {
+    font-size: 24px;
+}
+
+#news-title {
+    color: #8BE0A8;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#news-item-row {
+    background-color: #14251C;
+    border: 1px solid rgba(85, 190, 125, 0.35);
+    border-radius: 6px;
+    padding: 5px 6px;
+    margin: 3px 0;
+}
+
+#news-item-row:hover {
+    background-color: rgba(85, 190, 125, 0.12);
+    border-color: rgba(85, 190, 125, 0.65);
+}
+
+#news-item-title {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    color: #DDEBE0;
+    font-size: 10px;
+}
+
+#news-item-title:hover {
+    color: #8BE0A8;
+}
+
+#news-item-time {
+    color: #91A397;
+    font-size: 9px;
+}
+
+#sidebar-inner.compact #logo-label,
+#sidebar-inner.compact #logo-x {
+    font-size: 17px;
+    letter-spacing: 0;
+}
+
+#sidebar-inner.compact #clock-time {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+#sidebar-inner.compact #clock-icon {
+    font-size: 17px;
+}
+
+#sidebar-inner.compact #app-label {
+    font-size: 11px;
+}
+
+#sidebar-inner.compact #app-icon {
+    font-size: 16px;
+    min-width: 22px;
+}
+
+#sidebar-inner.compact #news-item-title {
+    font-size: 9px;
+}
+
+#sidebar-inner.compact #news-item-time {
+    font-size: 8px;
+}
+
+#sidebar-inner.compact #news-title {
+    font-size: 10px;
+}
+
+#sidebar-inner.compact #calendar-month {
+    font-size: 10px;
+}
+
+#sidebar-inner.compact #location-label {
+    font-size: 14px;
+}
+
+#sidebar-inner.compact #condition-label {
+    font-size: 11px;
+}
+
+#sidebar-inner.compact #weather-emoji {
+    font-size: 20px;
+}
+
+#sidebar-inner.compact #clock-box,
+#sidebar-inner.compact #stats-box,
+#sidebar-inner.compact #calendar-box,
+#sidebar-inner.compact #WeatherSidebar,
+#sidebar-inner.compact #weather-web-frame,
+#sidebar-inner.compact #news-widget {
+    padding: 5px;
+    margin: 3px 0;
+}
+
+#sidebar-inner.compact #news-item-row {
+    padding: 4px 5px;
+    margin: 2px 0;
+}
+
+#sidebar-inner.wide #logo-label,
+#sidebar-inner.wide #logo-x {
+    font-size: 26px;
+}
+
+#sidebar-inner.wide #clock-time {
+    font-size: 34px;
+}
+
+#sidebar-inner.wide #app-label {
+    font-size: 14px;
+}
+
+#sidebar-inner.wide #news-item-title {
+    font-size: 11px;
+}
+
+#sidebar-inner.wide #news-item-time {
+    font-size: 10px;
+}
+
+#sidebar-inner.wide #WeatherSidebar,
+#sidebar-inner.wide #weather-web-frame {
+    padding: 14px;
+}
+
+#sidebar-inner.wide #news-widget {
+    padding: 10px;
+}
+
+dialog label,
+window.dialog-modal label {
+    color: #D5E6D8;
+}
+
+button {
+    background-color: #17251D;
+    background-image: none;
+    color: #D5E6D8;
+    border: 1px solid rgba(85, 190, 125, 0.30);
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+button:hover {
+    background-color: rgba(85, 190, 125, 0.20);
+    color: #FFFFFF;
+}
+
+button:active {
+    background-color: rgba(85, 190, 125, 0.40);
+}
+
+entry {
+    background-color: #11231A;
+    color: #FFFFFF;
+    border: 1px solid #55BE7D;
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+
+checkbutton,
+radiobutton {
+    color: #D5E6D8;
+}
+
+list,
+listbox,
+listbox row {
+    background-color: #11231A;
+    color: #D5E6D8;
+    border-color: rgba(85, 190, 125, 0.25);
+}
+
+combobox,
+combobox button,
+combobox cellview,
+combobox label,
+#theme-combo,
+#language-combo {
+    background-color: #17251D;
+    color: #D5E6D8;
+}
+
+combobox button:hover,
+#theme-combo:hover,
+#language-combo:hover {
+    background-color: rgba(85, 190, 125, 0.22);
+    color: #FFFFFF;
+}
+
+/* ── Menu a tendina / Popup combobox ─────────────────────────────────── */
+window.popup,
+window.popup menu,
+menu,
+.menu,
+combobox menu {
+    background-color: #0B1511;
+    color: #D5E6D8;
+    border: 1px solid rgba(85, 190, 125, 0.40);
+    padding: 4px;
+}
+
+menuitem,
+.menuitem,
+combobox menuitem {
+    background-color: #0B1511;
+    color: #D5E6D8;
+    padding: 6px 10px;
+}
+
+menuitem label,
+.menuitem label,
+combobox menuitem label,
+menuitem cellview,
+combobox menuitem cellview {
+    color: #D5E6D8;
+    background-color: transparent;
+}
+
+menuitem:hover,
+menuitem:selected,
+combobox menuitem:hover,
+combobox menuitem:selected {
+    background-color: #388E5A;
+    color: #FFFFFF;
+}
+
+menuitem:hover label,
+menuitem:selected label,
+combobox menuitem:hover label,
+combobox menuitem:selected label,
+menuitem:hover cellview,
+menuitem:selected cellview,
+combobox menuitem:hover cellview,
+combobox menuitem:selected cellview {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+popover,
+popover.menu,
+combobox popover {
+    background-color: #0B1511;
+    color: #D5E6D8;
+    border: 1px solid rgba(85, 190, 125, 0.40);
+}
+
+popover label,
+popover modelbutton,
+popover modelbutton label {
+    color: #D5E6D8;
+}
+
+popover modelbutton:hover,
+popover modelbutton:selected {
+    background-color: #388E5A;
+    color: #FFFFFF;
+}
+
+
+*:focus {
+    outline: none;
+    box-shadow: none;
+}

@@ -1,1 +1,631 @@
+/* Dark Navy */
+
+* {
+    font-family: "Inter", "Noto Sans", sans-serif;
+    color: #CBD8F0;
+    outline: none;
+}
+
+window,
+#sidebar-window {
+    background-color: #0B1120;
+    color: #CBD8F0;
+}
+
+#sidebar-window {
+    border-right: 1px solid rgba(33, 150, 243, 0.25);
+}
+
+#sidebar-root,
+#sidebar-inner {
+    background-color: transparent;
+}
+
+/* ── Barre di scorrimento ─────────────────────────────────────────────── */
+
+scrolledwindow scrollbar {
+    background-color: transparent;
+    border: none;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrolledwindow scrollbar slider {
+    background-color: rgba(33, 150, 243, 0.35);
+    border-radius: 3px;
+    min-width: 5px;
+    min-height: 28px;
+    border: none;
+}
+
+scrolledwindow scrollbar slider:hover {
+    background-color: rgba(33, 150, 243, 0.70);
+}
+
+scrolledwindow scrollbar trough {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 3px;
+    min-width: 6px;
+}
+
+/* ── Maniglia di ridimensionamento ────────────────────────────────────── */
+
+#resize-grip {
+    background-color: transparent;
+}
+
+#resize-grip:hover {
+    background-color: rgba(33, 150, 243, 0.55);
+}
+
+#resize-grip:active {
+    background-color: #2196F3;
+}
+
+/* ── Header: logo antiX, personalizza, chiudi ─────────────────────────── */
+
+#header-box {
+    background-color: #0D1B33;
+    background-image: linear-gradient(to bottom, #0D1B33, #0B1120);
+    border-radius: 0 0 8px 8px;
+    padding: 4px 0 8px 0;
+}
+
+#logo-label {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+#logo-x {
+    color: #2196F3;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0 0 0 1px;
+}
+
+#customize-button {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    padding: 4px;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 6px;
+}
+
+#customize-button:hover {
+    background-color: rgba(33, 150, 243, 0.15);
+}
+
+#customize-button image {
+    color: #2196F3;
+}
+
+#customize-button:hover image {
+    color: #63B5FF;
+}
+
+#close-btn {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 6px;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+#close-btn:hover {
+    color: #FF5252;
+    background-color: rgba(255, 82, 82, 0.15);
+}
+
+#close-btn:active {
+    background-color: rgba(255, 82, 82, 0.30);
+}
+
+#section-sep {
+    background-color: transparent;
+    background-image: none;
+    min-height: 0;
+    margin: 0;
+    border: none;
+}
+
+/* ── Pulsanti delle applicazioni ──────────────────────────────────────── */
+
+#app-btn {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+#app-btn:hover {
+    background-color: rgba(33, 150, 243, 0.15);
+}
+
+#app-btn:active {
+    background-color: rgba(33, 150, 243, 0.30);
+}
+
+#app-icon {
+    color: #2196F3;
+    font-size: 18px;
+    min-width: 28px;
+}
+
+#app-label {
+    color: #CBD8F0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ── Calendario ───────────────────────────────────────────────────────── */
+
+#calendar-box {
+    background-color: #0D1B33;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 4px 0;
+}
+
+#calendar-header {
+    background-color: transparent;
+    padding: 2px 0 5px 0;
+}
+
+#calendar-month {
+    color: #DCE6F2;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#calendar-nav-btn {
+    background-color: #111A24;
+    background-image: none;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 5px;
+    color: #69B7FF;
+    font-size: 11px;
+    min-width: 22px;
+    min-height: 20px;
+    padding: 0;
+}
+
+#calendar-nav-btn:hover {
+    background-color: rgba(33, 150, 243, 0.22);
+    border-color: #2196F3;
+}
+
+#calendar-widget {
+    background-color: #101A2B;
+    color: #D5DCE5;
+    border: 1px solid rgba(33, 150, 243, 0.30);
+    border-radius: 6px;
+    padding: 3px;
+}
+
+#calendar-widget:focus,
+#calendar-widget grid:focus,
+#calendar-widget label:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+}
+
+#calendar-widget > grid > label {
+    color: #AEB9C6;
+    font-size: 9px;
+    padding: 2px;
+}
+
+#calendar-widget:selected {
+    background-color: #1688E8;
+    color: #FFFFFF;
+    border-radius: 3px;
+}
+
+#calendar-widget:indeterminate {
+    color: #647181;
+}
+
+#calendar-today-label {
+    color: #63B5FF;
+    font-size: 9px;
+    padding-top: 2px;
+}
+
+/* ── Meteo nativo ─────────────────────────────────────────────────────── */
+
+#WeatherSidebar {
+    background-color: #0D1B33;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 4px 0;
+}
+
+#weather-header {
+    background-color: transparent;
+}
+
+#WeatherSidebar button {
+    background-color: rgba(33, 150, 243, 0.15);
+    background-image: none;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 6px;
+    color: #2196F3;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+}
+
+#WeatherSidebar button:hover {
+    background-color: rgba(33, 150, 243, 0.30);
+    border-color: rgba(33, 150, 243, 0.60);
+    color: #FFFFFF;
+}
+
+#WeatherSidebar button:active {
+    background-color: rgba(33, 150, 243, 0.50);
+}
+
+/* CORRETTI: large→16px, medium→13px, small→11px */
+#location-label {
+    color: #E0E8F4;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#condition-label {
+    color: #CBD8F0;
+    font-size: 13px;
+}
+
+#weather-emoji {
+    font-size: 24px;
+}
+
+/* ── Notizie ──────────────────────────────────────────────────────────── */
+
+#news-widget {
+    background-color: #0D1B33;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 4px 0;
+}
+
+#news-header,
+#news-list,
+#news-scroll {
+    background-color: transparent;
+}
+
+#news-title {
+    color: #63B5FF;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#news-refresh-btn,
+#news-more-link {
+    background-color: #111A24;
+    background-image: none;
+    border: 1px solid rgba(33, 150, 243, 0.35);
+    border-radius: 5px;
+    color: #69B7FF;
+    padding: 3px 6px;
+}
+
+#news-refresh-btn:hover,
+#news-more-link:hover {
+    background-color: rgba(33, 150, 243, 0.22);
+    border-color: #2196F3;
+}
+
+#news-item-row {
+    background-color: #101A2B;
+    border: 1px solid rgba(33, 150, 243, 0.55);
+    border-radius: 6px;
+    padding: 5px 6px;
+    margin: 3px 0;
+}
+
+#news-item-row:hover {
+    background-color: rgba(33, 150, 243, 0.12);
+    border-color: rgba(33, 150, 243, 0.75);
+}
+
+#news-item-title {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    color: #DCE6F2;
+    font-size: 10px;
+}
+
+#news-item-title:hover {
+    color: #63B5FF;
+}
+
+#news-item-time {
+    color: #7C8AA0;
+    font-size: 9px;
+}
+
+/* ── Variante compatta (< 175 px) ─────────────────────────────────────── */
+
+#sidebar-inner.compact #logo-label,
+#sidebar-inner.compact #logo-x {
+    font-size: 17px;
+    letter-spacing: 0;
+}
+
+#sidebar-inner.compact #clock-time {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+#sidebar-inner.compact #clock-icon {
+    font-size: 17px;
+}
+
+#sidebar-inner.compact #app-label {
+    font-size: 11px;
+}
+
+#sidebar-inner.compact #app-icon {
+    font-size: 16px;
+    min-width: 22px;
+}
+
+#sidebar-inner.compact #news-item-title {
+    font-size: 9px;
+}
+
+#sidebar-inner.compact #news-item-time {
+    font-size: 8px;
+}
+
+#sidebar-inner.compact #news-title {
+    font-size: 10px;
+}
+
+#sidebar-inner.compact #calendar-month {
+    font-size: 10px;
+}
+
+/* CORRETTI: medium→14px, small→11px */
+#sidebar-inner.compact #location-label {
+    font-size: 14px;
+}
+
+#sidebar-inner.compact #condition-label {
+    font-size: 11px;
+}
+
+#sidebar-inner.compact #weather-emoji {
+    font-size: 20px;
+}
+
+#sidebar-inner.compact #clock-box,
+#sidebar-inner.compact #stats-box,
+#sidebar-inner.compact #calendar-box,
+#sidebar-inner.compact #WeatherSidebar,
+#sidebar-inner.compact #weather-web-frame,
+#sidebar-inner.compact #news-widget {
+    padding: 5px;
+    margin: 3px 0;
+}
+
+#sidebar-inner.compact #news-item-row {
+    padding: 4px 5px;
+    margin: 2px 0;
+}
+
+/* ── Variante larga (>= 330 px) ───────────────────────────────────────── */
+
+#sidebar-inner.wide #logo-label,
+#sidebar-inner.wide #logo-x {
+    font-size: 26px;
+}
+
+#sidebar-inner.wide #clock-time {
+    font-size: 34px;
+}
+
+#sidebar-inner.wide #app-label {
+    font-size: 14px;
+}
+
+#sidebar-inner.wide #news-item-title {
+    font-size: 11px;
+}
+
+#sidebar-inner.wide #news-item-time {
+    font-size: 10px;
+}
+
+#sidebar-inner.wide #WeatherSidebar,
+#sidebar-inner.wide #weather-web-frame {
+    padding: 14px;
+}
+
+#sidebar-inner.wide #news-widget {
+    padding: 10px;
+}
+
+/* ── Dialoghi ─────────────────────────────────────────────────────────── */
+
+dialog,
+window.dialog-modal,
+#dialog-window {
+    background-color: #0B1120;
+    color: #CBD8F0;
+}
+
+dialog label,
+window.dialog-modal label {
+    color: #CBD8F0;
+}
+
+button {
+    background-color: #111A24;
+    background-image: none;
+    color: #CBD8F0;
+    border: 1px solid rgba(33, 150, 243, 0.30);
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+button:hover {
+    background-color: rgba(33, 150, 243, 0.20);
+    color: #FFFFFF;
+}
+
+button:active {
+    background-color: rgba(33, 150, 243, 0.40);
+}
+
+entry {
+    background-color: #0D1B33;
+    color: #FFFFFF;
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+
+checkbutton,
+radiobutton {
+    color: #CBD8F0;
+}
+
+list,
+listbox,
+listbox row {
+    background-color: #0D1B33;
+    color: #CBD8F0;
+    border-color: rgba(33, 150, 243, 0.25);
+}
+
+combobox,
+combobox button,
+combobox cellview,
+combobox label,
+#theme-combo,
+#language-combo {
+    background-color: #111A24;
+    color: #CBD8F0;
+}
+
+combobox button:hover,
+#theme-combo:hover,
+#language-combo:hover {
+    background-color: rgba(33, 150, 243, 0.20);
+    color: #FFFFFF;
+}
+
+/* ── Menu a tendina / Popup combobox ─────────────────────────────────── */
+window.popup,
+window.popup menu,
+menu,
+.menu,
+combobox menu {
+    background-color: #0B1120;
+    color: #CBD8F0;
+    border: 1px solid rgba(33, 150, 243, 0.40);
+    padding: 4px;
+}
+
+menuitem,
+.menuitem,
+combobox menuitem {
+    background-color: #0B1120;
+    color: #CBD8F0;
+    padding: 6px 10px;
+}
+
+menuitem label,
+.menuitem label,
+combobox menuitem label,
+menuitem cellview,
+combobox menuitem cellview {
+    color: #CBD8F0;
+    background-color: transparent;
+}
+
+menuitem:hover,
+menuitem:selected,
+combobox menuitem:hover,
+combobox menuitem:selected {
+    background-color: #1688E8;
+    color: #FFFFFF;
+}
+
+menuitem:hover label,
+menuitem:selected label,
+combobox menuitem:hover label,
+combobox menuitem:selected label,
+menuitem:hover cellview,
+menuitem:selected cellview,
+combobox menuitem:hover cellview,
+combobox menuitem:selected cellview {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+popover,
+popover.menu,
+combobox popover {
+    background-color: #0B1120;
+    color: #CBD8F0;
+    border: 1px solid rgba(33, 150, 243, 0.40);
+}
+
+popover label,
+popover modelbutton,
+popover modelbutton label {
+    color: #CBD8F0;
+}
+
+popover modelbutton:hover,
+popover modelbutton:selected {
+    background-color: #1688E8;
+    color: #FFFFFF;
+}
+
+/* CORRETTO: focus visibile sostituito solo con :focus */
+*:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#sidebar-window:focus,
+#sidebar-inner:focus,
+#news-widget:focus,
+#WeatherSidebar:focus,
+#calendar-widget:focus {
+    outline: none;
+    box-shadow: none;
+}
 

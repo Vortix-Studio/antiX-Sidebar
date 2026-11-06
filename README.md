@@ -1,5 +1,10 @@
 # antiX Sidebar
 
+<p align="center">
+  <img src="icon/icona_sidebar.png" alt="antiX Sidebar" width="360">
+</p>
+
+
 Una sidebar laterale per **antiX Linux** scritta in **C++ / GTK3**.
 Si ancora sul lato sinistro dello schermo come un pannello EWMH, mostrando:
 

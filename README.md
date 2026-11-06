@@ -56,7 +56,7 @@ antiX_sidebar/ ├── CMakeLists.txt # sistema di build CMake ├── style
 Dal pulsante ⚙ nell'header della sidebar si apre il dialog **Personalizza**
 con cui è possibile:
 
-- cambiare **lingua** (Italiano / English)
+- cambiare **lingua** (It / En / Es / pt / ru / de / ja)
 - scegliere un **tema CSS** tra quelli disponibili, oppure caricare un
   **file CSS locale** con il file chooser
 - **mostrare/nascondere** i singoli widget (Audio, Calendario, Meteo, Notizie)

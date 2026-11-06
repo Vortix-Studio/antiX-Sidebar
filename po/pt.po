@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: Portuguese\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "Localização"
+
+msgid "Change Location"
+msgstr "Alterar localização"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "A aguardar os dados meteorológicos..."
+
+msgid "Refresh"
+msgstr "Atualizar"
+
+msgid "Change location"
+msgstr "Alterar localização"
+
+msgid "Enter a location"
+msgstr "Introduza uma localização"
+
+msgid "Loading..."
+msgstr "A carregar..."
+
+msgid "Weather data not available"
+msgstr "Dados meteorológicos indisponíveis"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "Notícias"
+
+msgid "Refresh news"
+msgstr "Atualizar notícias"
+
+msgid "More news ›"
+msgstr "Mais notícias ›"
+
+msgid "News not available"
+msgstr "Notícias indisponíveis"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 Hoje"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "Controlo de áudio"
+
+msgid "No track"
+msgstr "Nenhuma faixa"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "Personalizar a barra lateral"
+
+msgid "Close sidebar"
+msgstr "Fechar a barra lateral"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "Tema da barra lateral (CSS)"

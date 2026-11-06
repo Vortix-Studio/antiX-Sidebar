@@ -1,0 +1,79 @@
+# Japanese translations for antix-sidebar package.
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "場所"
+
+msgid "Change Location"
+msgstr "場所を変更"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "天気情報を待っています..."
+
+msgid "Refresh"
+msgstr "更新"
+
+msgid "Change location"
+msgstr "場所を変更"
+
+msgid "Enter a location"
+msgstr "場所を入力"
+
+msgid "Loading..."
+msgstr "読み込み中..."
+
+msgid "Weather data not available"
+msgstr "天気情報を利用できません"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "ニュース"
+
+msgid "Refresh news"
+msgstr "ニュースを更新"
+
+msgid "More news ›"
+msgstr "ニュースをもっと見る ›"
+
+msgid "News not available"
+msgstr "ニュースを利用できません"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 今日"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "オーディオコントロール"
+
+msgid "No track"
+msgstr "再生中の曲はありません"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "サイドバーをカスタマイズ"
+
+msgid "Close sidebar"
+msgstr "サイドバーを閉じる"
+
+msgid "Language"
+msgstr "言語"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "サイドバーのテーマ（CSS）"

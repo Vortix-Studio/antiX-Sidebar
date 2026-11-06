@@ -1,0 +1,84 @@
+# French translations for antix-sidebar package.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the antix-sidebar package.
+# FIRST AUTHOR <vortix.studio@ik.me>, 2026.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "Emplacement"
+
+msgid "Change Location"
+msgstr "Changer d’emplacement"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "En attente des données météo..."
+
+msgid "Refresh"
+msgstr "Actualiser"
+
+msgid "Change location"
+msgstr "Changer d’emplacement"
+
+msgid "Enter a location"
+msgstr "Saisissez un emplacement"
+
+msgid "Loading..."
+msgstr "Chargement..."
+
+msgid "Weather data not available"
+msgstr "Données météo indisponibles"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "Actualités"
+
+msgid "Refresh news"
+msgstr "Actualiser les actualités"
+
+msgid "More news ›"
+msgstr "Plus d’actualités ›"
+
+msgid "News not available"
+msgstr "Actualités indisponibles"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 Aujourd’hui"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "Contrôle audio"
+
+msgid "No track"
+msgstr "Aucune piste"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "Personnaliser la barre latérale"
+
+msgid "Close sidebar"
+msgstr "Fermer la barre latérale"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "Thème de la barre latérale (CSS)"

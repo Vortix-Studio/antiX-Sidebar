@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "Місцезнаходження"
+
+msgid "Change Location"
+msgstr "Змінити місцезнаходження"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "Очікування даних про погоду..."
+
+msgid "Refresh"
+msgstr "Оновити"
+
+msgid "Change location"
+msgstr "Змінити місцезнаходження"
+
+msgid "Enter a location"
+msgstr "Введіть місцезнаходження"
+
+msgid "Loading..."
+msgstr "Завантаження..."
+
+msgid "Weather data not available"
+msgstr "Дані про погоду недоступні"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "Новини"
+
+msgid "Refresh news"
+msgstr "Оновити новини"
+
+msgid "More news ›"
+msgstr "Більше новин ›"
+
+msgid "News not available"
+msgstr "Новини недоступні"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 Сьогодні"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "Керування звуком"
+
+msgid "No track"
+msgstr "Немає композиції"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "Налаштувати бічну панель"
+
+msgid "Close sidebar"
+msgstr "Закрити бічну панель"
+
+msgid "Language"
+msgstr "Мова"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "Тема бічної панелі (CSS)"

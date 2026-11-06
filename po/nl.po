@@ -1,0 +1,79 @@
+# Dutch translations for antix-sidebar package.
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "Locatie"
+
+msgid "Change Location"
+msgstr "Locatie wijzigen"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "Wachten op weergegevens..."
+
+msgid "Refresh"
+msgstr "Vernieuwen"
+
+msgid "Change location"
+msgstr "Locatie wijzigen"
+
+msgid "Enter a location"
+msgstr "Voer een locatie in"
+
+msgid "Loading..."
+msgstr "Laden..."
+
+msgid "Weather data not available"
+msgstr "Weergegevens niet beschikbaar"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "Nieuws"
+
+msgid "Refresh news"
+msgstr "Nieuws vernieuwen"
+
+msgid "More news ›"
+msgstr "Meer nieuws ›"
+
+msgid "News not available"
+msgstr "Nieuws niet beschikbaar"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 Vandaag"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "Audiobediening"
+
+msgid "No track"
+msgstr "Geen nummer"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "Zijbalk aanpassen"
+
+msgid "Close sidebar"
+msgstr "Zijbalk sluiten"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "Thema van de zijbalk (CSS)"

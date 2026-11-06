@@ -1,0 +1,79 @@
+# Russian translations for antix-sidebar package.
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-sidebar 1.0.0\n"
+"Report-Msgid-Bugs-To: diego@example.com\n"
+"POT-Creation-Date: 2026-11-04 18:00+0000\n"
+"PO-Revision-Date: 2026-11-04 18:00+0000\n"
+"Last-Translator: FULL NAME <diego@example.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: src/widgets/weather_widget.cpp
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Change Location"
+msgstr "Изменить местоположение"
+
+msgid "-- °C"
+msgstr "-- °C"
+
+msgid "Waiting for weather data..."
+msgstr "Ожидание данных о погоде..."
+
+msgid "Refresh"
+msgstr "Обновить"
+
+msgid "Change location"
+msgstr "Изменить местоположение"
+
+msgid "Enter a location"
+msgstr "Введите местоположение"
+
+msgid "Loading..."
+msgstr "Загрузка..."
+
+msgid "Weather data not available"
+msgstr "Данные о погоде недоступны"
+
+#: src/widgets/news_widget.cpp
+msgid "News"
+msgstr "Новости"
+
+msgid "Refresh news"
+msgstr "Обновить новости"
+
+msgid "More news ›"
+msgstr "Больше новостей ›"
+
+msgid "News not available"
+msgstr "Новости недоступны"
+
+#: src/widgets/calendar_widget.cpp
+msgid "📍 Today"
+msgstr "📍 Сегодня"
+
+#: src/widgets/audio_control_widget.cpp
+msgid "Audio Control"
+msgstr "Управление звуком"
+
+msgid "No track"
+msgstr "Нет воспроизводимой композиции"
+
+#: src/sidebar.cpp
+msgid "Customize sidebar"
+msgstr "Настроить боковую панель"
+
+msgid "Close sidebar"
+msgstr "Закрыть боковую панель"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Sidebar Theme (CSS)"
+msgstr "Тема боковой панели (CSS)"

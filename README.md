@@ -19,7 +19,7 @@ Si ancora sul lato sinistro dello schermo come un pannello EWMH, mostrando:
 - **Istanza singola**: previene duplicati tramite lock file (`flock`)
 - **Resize dinamico**: trascinamento tramite grip laterale (140–560 px) con class switching CSS (`.compact` / `.wide`)
 - **Gestione temi**: directory `themes/` con file CSS, nome letto dal commento in testa al file, tema persistente in `~/.config/antix-sidebar/theme.conf`
-- **Dialog Personalizza**: scelta lingua (IT/EN), tema CSS (integrato o file locale), visibilità e riordino dei widget
+- **Dialog Personalizza**: scelta lingua (cartella po), tema CSS (integrato o file locale), visibilità e riordino dei widget
 - **Ottimizzazioni**: cache atom X11, debounce su `apply_always_on_top()`, kinetic/overlay scrolling disabilitati per IceWM
 - **Tema scuro navy**: stile coerente con antiX (accenti #2196F3)
 
@@ -56,7 +56,7 @@ antiX_sidebar/ ├── CMakeLists.txt # sistema di build CMake ├── style
 Dal pulsante ⚙ nell'header della sidebar si apre il dialog **Personalizza**
 con cui è possibile:
 
-- cambiare **lingua** (It / En / Es / pt / ru / de / ja)
+- cambiare **lingua** (file cartella po)
 - scegliere un **tema CSS** tra quelli disponibili, oppure caricare un
   **file CSS locale** con il file chooser
 - **mostrare/nascondere** i singoli widget (Audio, Calendario, Meteo, Notizie)

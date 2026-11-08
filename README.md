@@ -1,7 +1,7 @@
 # antiX Sidebar
 
 <p align="center">
-  <img src="img/logo3.png" alt="antiX Sidebar" width="360">
+  <img src="img/logo.png" alt="antiX Sidebar" width="360">
 </p>
 
 
@@ -10,10 +10,10 @@ Si ancora sul lato sinistro dello schermo come un pannello EWMH, mostrando:
 
 | Sezione | Contenuto |
 |---|---|
-| 📅 Calendario | Calendario mensile navigabile |
-| 🌤 Meteo | Temperatura e condizioni (Open-Meteo, no API key) |
-| 📰 Notizie | Feed RSS da fonti selezionate |
-| 🎵 Audio | Controlli volumetrici PulseAudio |
+| 📅 Calendario | Calendario mensile navigabile (GtkCalendar), nomi mesi/località via gettext |
+| 🌤 Meteo | Temperatura e condizioni via **wttr.in** (no API key), località configurable |
+| 📰 Notizie | Feed RSS (BBC World) con titoli cliccabili e link "altri articoli" |
+| 🎵 Audio | Controlli player MPRIS via **playerctl**: play/pausa, stop, prev/next, volume, progresso brano |
 
 ## Caratteristiche principali
 
@@ -22,11 +22,41 @@ Si ancora sul lato sinistro dello schermo come un pannello EWMH, mostrando:
 - **Riserva spazio**: usa `_NET_WM_STRUT_PARTIAL` per non coprire le finestre
 - **Overlay mode**: opzione per visualizzare senza riserva di spazio
 - **Istanza singola**: previene duplicati tramite lock file (`flock`)
-- **Resize dinamico**: trascinamento tramite grip laterale (140–560 px) con class switching CSS (`.compact` / `.wide`)
-- **Gestione temi**: directory `themes/` con file CSS, nome letto dal commento in testa al file, tema persistente in `~/.config/antix-sidebar/theme.conf`
-- **Dialog Personalizza**: scelta lingua (cartella po), tema CSS (integrato o file locale), visibilità e riordino dei widget
-- **Ottimizzazioni**: cache atom X11, debounce su `apply_always_on_top()`, kinetic/overlay scrolling disabilitati per IceWM
+- **Resize dinamico**: trascinamento tramite grip laterale (140–560 px, iniziale 190 px) con class switching CSS (`.compact` sotto 175 px / `.wide` sopra 330 px)
+- **Nessun furto di focus**: la finestra non accetta il focus del WM (`accept-focus`/`focus-on-map` disattivati) e il focus da tastiera è limitato ai soli controlli interattivi (bottoni, slider, combo, entry)
+- **Gestione temi**: directory `themes/` con file CSS, nome letto dal commento in testa al file, provider CSS sostituito correttamente (senza accumulo); tema persistente in `~/.config/antix-sidebar/theme.conf`, sospensione temporanea del tema per file chooser e dialoghi di sistema
+- **Layout persistente**: `~/.config/antix-sidebar/layout.conf` salva larghezza, lingua, tema, visibilità e ordine dei widget
+- **Dialog Personalizza**: scelta lingua (11 lingue), tema CSS (integrato o file locale), visibilità e riordino dei widget con frecce ↑/↓
+- **Ottimizzazioni**: cache atom X11, debounce su `apply_always_on_top()`, kinetic/overlay scrolling disabilitati per IceWM, polling audio ogni 3 s (riduce i fork di ~85%), richieste di rete asincrone (thread/GTask) con timeout e annullamento
 - **Tema scuro navy**: stile coerente con antiX (accenti #2196F3)
+
+## Widget
+
+### Meteo
+- Dati da **wttr.in** con formato custom (`%C|%t|%f|%h|%w|%P|%p|%u|%c|%l`), risposta HTTP in un thread di lavoro dedicato, callback via `g_idle_add`
+- **Cambio località** dal pulsante 📍 (dialog modale), salvata in `~/.config/antix-sidebar/weather.ini`
+- **Aggiornamento manuale** con ↻, richiesta annullabile in corsa
+- Icone meteo dedicate (`src/icons`), riconoscimento condizione in italiano e inglese, con fallback sull'emoji
+- Riga ↑max/↓min predisposta (da attivare quando il client fornirà i dati giornalieri)
+
+### Notizie
+- Feed RSS `feeds.bbci.co.uk/news/world/rss.xml`, massimo 3 titoli
+- Fetch asincrono con GTask, limite 64 KB, timeout 3+5 s
+- Titoli cliccabili (apertura nel browser predefinito), URL validati con GUri
+
+### Audio
+- Singola chiamata `playerctl metadata` con formato unificato (status|title|artist|album|volume|position|length)
+- Barra di avanzamento brano sincronizzata, slider volume, polling ogni 3 s
+
+### Calendario
+- GtkCalendar con navigazione ◀/▶ mese/anno, etichetta mese tradotta via gettext
+- LC_TIME impostato secondo la lingua scelta (con fallback a "C")
+- Tick ogni 60 s per aggiornare automaticamente il giorno corrente
+
+## Lingue
+
+Italiano, English, Deutsch, Español, Français, 日本語, Nederlands, Polski, Português, Русский, Українська.
+La lingua si sceglie dal dialog Personalizza; le etichette usano gettext (dominio `antix-sidebar`).
 
 ## Temi
 
@@ -54,30 +84,4 @@ Variabili d'ambiente supportate:
 
 ## Struttura del progetto
 
-antiX_sidebar/ ├── CMakeLists.txt # sistema di build CMake ├── style.css # tema CSS GTK (scuro + accento blu antiX) ├── antix-sidebar.desktop # voce del menu applicazioni XDG ├── themes/ # temi CSS della sidebar ├── tools/ │ ├── install.sh # installazione di sistema │ ├── uninstall.sh # rimozione completa │ ├── reset-workarea.sh # reset workarea se bloccata da strut │ ├── start-sidebar.sh # avvio comodo con opzione overlay │ └── autostart-setup.sh # configurazione autostart IceWM └── src/ ├── main.cpp # entry point + flock istanza singola ├── i18n.h # macro gettext ├── sidebar.h / .cpp # finestra principale + hint EWMH + dialog personalizza ├── theme_manager.h/.cpp # gestione temi, directory, persistenza └── widgets/ ├── calendar_widget.h / .cpp # calendario mensile ├── weather_widget.h / .cpp # meteo asincrono ├── news_widget.h / .cpp # feed notizie RSS ├── audio_control_widget.h / .cpp # volumi PulseAudio └── meteoblue_scraper.cpp # scraping meteo supplementare
-
-## Personalizzazione
-
-Dal pulsante ⚙ nell'header della sidebar si apre il dialog **Personalizza**
-con cui è possibile:
-
-- cambiare **lingua** (file cartella po)
-- scegliere un **tema CSS** tra quelli disponibili, oppure caricare un
-  **file CSS locale** con il file chooser
-- **mostrare/nascondere** i singoli widget (Audio, Calendario, Meteo, Notizie)
-- **riordinare** i widget con le frecce ↑/↓
-
-Le impostazioni di tema sono persistenti in `~/.config/antix-sidebar/theme.conf`.
-
-## Dipendenze
-
-```bash
-sudo apt install cmake pkg-config libgtk-3-dev libcairo2-dev \
-                 libcurl4-openssl-dev libxml2-dev libx11-dev
-
-Versioni minime:
-
-    GTK 3.24+
-    Cairo 1.16+
-    CMake 3.16+
-    IceWM 1.7+ (o WM conforme EWMH)
+antiX_sidebar/ ├── CMakeLists.txt # sistema di build CMake ├── style.css # tema CSS GTK (scuro + accento blu antiX) ├── antix-sidebar.desktop # voce del menu applicazioni XDG ├── themes/ # temi CSS della sidebar ├── tools/ │ ├── install.sh # installazione di sistema │ ├── uninstall.sh # rimozione completa │ ├──

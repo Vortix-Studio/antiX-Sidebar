@@ -1,7 +1,7 @@
 # antiX Sidebar
 
 <p align="center">
-  <img src="img/logo.png" alt="antiX Sidebar" width="360">
+  <img src="img/logo3.png" alt="antiX Sidebar" width="360">
 </p>
 
 

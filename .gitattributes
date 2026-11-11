@@ -1,0 +1,4 @@
+src/*.cpp linguist-language=C++
+src/*.h linguist-language=C++
+src/widgets/*.cpp linguist-language=C++
+src/widgets/*.h linguist-language=C++

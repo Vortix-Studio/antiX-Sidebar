@@ -1,5 +1,5 @@
 #!/bin/bash
-# Avvia la sidebar con opzione overlay facoltativa
+# Start the sidebar, optionally in overlay mode
 APP="${APP:-$HOME/Antigravity/antiX_sidebar/build/antix-sidebar}"
 
 case "$1" in

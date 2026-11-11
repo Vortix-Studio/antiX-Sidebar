@@ -92,3 +92,35 @@ antiX_sidebar/
 ├── themes/                  # temi CSS della sidebar
 ├── tools/
 │   ├── install.sh           # installazione di sistem
+
+
+## Personalizzazione
+
+Dal pulsante ⚙ nell'header della sidebar si apre il dialog **Personalizza**
+con cui è possibile:
+
+- cambiare **lingua**
+- scegliere un **tema CSS** tra quelli disponibili, oppure caricare un
+  **file CSS locale** con il file chooser (il tema di sistema viene
+  temporaneamente ripristinato durante la scelta)
+- **mostrare/nascondere** i singoli widget (Audio, Calendario, Meteo, Notizie)
+- **riordinare** i widget con le frecce ↑/↓
+
+Le impostazioni sono persistenti in `~/.config/antix-sidebar/`
+(`theme.conf` per il tema, `layout.conf` per larghezza, lingua, visibilità
+e ordine dei widget, `weather.ini` per la località meteo).
+
+## Dipendenze
+
+```bash
+sudo apt install cmake pkg-config libgtk-3-dev libcairo2-dev \
+                 libcurl4-openssl-dev libxml2-dev libx11-dev
+
+Runtime: playerctl (per il widget Audio).
+
+Versioni minime:
+
+    GTK 3.24+
+    Cairo 1.16+
+    CMake 3.16+
+    IceWM 1.7+ (o WM conforme EWMH)

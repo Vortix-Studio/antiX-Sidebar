@@ -15,7 +15,7 @@ jobs:
       - name: Installa dipendenze
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ pkg-config libgtk-3-dev
+          sudo apt-get install -y cmake g++ pkg-config libgtk-3-dev libcairo2-dev libx11-dev libcurl4-openssl-dev
 
       - name: Configura
         run: cmake -S . -B build

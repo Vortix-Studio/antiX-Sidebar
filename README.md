@@ -110,7 +110,7 @@ antiX_sidebar/
         ├── open_meteo_client.h / .cpp
         ├── news_widget.h / .cpp
         ├── audio_control_widget.h / .cpp
-        └── icons/              # Weather icons (EN/IT names)
+        └── icons/              # Weather icons
 ```
 
 ## Customization

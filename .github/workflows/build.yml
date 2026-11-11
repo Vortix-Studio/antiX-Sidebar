@@ -27,6 +27,9 @@ jobs:
             libx11-dev \
             playerctl
 
+      - name: Verifica GTK
+        run: pkg-config --modversion gtk+-3.0
+
       - name: Configura
         run: cmake -S . -B build
 

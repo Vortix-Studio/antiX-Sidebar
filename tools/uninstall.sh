@@ -1,9 +1,9 @@
 #!/bin/bash
-# Disinstallazione completa
+# Complete uninstallation
 PREFIX="${PREFIX:-/usr/local}"
 
 if [[ $EUID -ne 0 ]]; then
-    echo "Questo script deve essere eseguito come root (sudo)"
+    echo "This script must be run as root (sudo)"
     exit 1
 fi
 
@@ -16,4 +16,4 @@ if command -v update-desktop-database &> /dev/null; then
     sudo update-desktop-database /usr/share/applications
 fi
 
-echo "✓ antiX Sidebar disinstallato"
+echo "✓ antiX Sidebar uninstalled"

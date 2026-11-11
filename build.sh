@@ -59,7 +59,7 @@ echo "── Compilazione ──"
 cmake --build "$BUILD_DIR" --parallel "$(nproc)"
 echo ""
 
-# ── install (opzionale) ───────────────────────────────────────────────────────
+# ── install (opzionale) ──────────────────────────────────────────────────────
 if [ "${INSTALL:-0}" = "1" ]; then
     echo "── Installazione in $INSTALL_PREFIX ──"
     cmake --install "$BUILD_DIR"

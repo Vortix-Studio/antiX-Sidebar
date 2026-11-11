@@ -4,110 +4,148 @@
   <img src="img/logo3.png" alt="antiX Sidebar" width="360">
 </p>
 
-Una sidebar laterale per **antiX Linux**, scritta in **C++ / GTK3**. Si ancora sul lato sinistro dello schermo come un pannello EWMH e mostra calendario, meteo, notizie e controlli audio.
+A sidebar for **antiX Linux**, written in **C++ / GTK3**. It docks on the left side of the screen as an EWMH panel and displays a calendar, weather, news, and audio controls.
 
-| Sezione | Contenuto |
+| Section | Content |
 |---|---|
-| 📅 Calendario | Calendario mensile navigabile (`GtkCalendar`), nomi dei mesi e localizzazione tramite gettext |
-| 🌤 Meteo | Temperatura e condizioni da **wttr.in** (senza API key); località configurabile |
-| 📰 Notizie | Feed RSS BBC World con titoli cliccabili e link ad altri articoli |
-| 🎵 Audio | Controlli MPRIS tramite **playerctl**: play/pausa, stop, traccia precedente/successiva, volume e progresso del brano |
+| 📅 Calendar | Navigable monthly calendar (`GtkCalendar`), with month names and localization via gettext |
+| 🌤 Weather | Temperature and conditions from **wttr.in** (no API key required); configurable location |
+| 📰 News | BBC World RSS feed with clickable headlines and a link to more articles |
+| 🎵 Audio | MPRIS controls via **playerctl**: play/pause, stop, previous/next track, volume, and track progress |
 
-## Caratteristiche principali
+## Main features
 
-- **Sempre sopra:** mantiene la finestra sovrapposta alle altre (`_NET_WM_STATE_ABOVE`), con un controllo periodico ogni 30 secondi.
-- **Visibile su tutti i desktop:** dock sticky su più workspace (`_NET_WM_DESKTOP` = `0xFFFFFFFF`).
-- **Riserva spazio:** usa `_NET_WM_STRUT_PARTIAL` per evitare di coprire le finestre.
-- **Modalità overlay:** permette di visualizzare la sidebar senza riservare spazio.
-- **Istanza singola:** previene le istanze duplicate tramite un lock file (`flock`).
-- **Ridimensionamento dinamico:** trascinamento tramite grip laterale, da 140 a 560 px; larghezza iniziale di 190 px. Applica classi CSS diverse (`.compact` sotto 175 px e `.wide` sopra 330 px).
-- **Nessun furto del focus:** la finestra non accetta il focus del window manager (`accept-focus` e `focus-on-map` disattivati); il focus da tastiera è limitato ai controlli interattivi.
-- **Gestione dei temi:** supporta file CSS nella directory `themes/`; il nome del tema viene letto dal commento iniziale del file. Il provider CSS viene sostituito senza accumularsi. Il tema scelto viene salvato in `~/.config/antix-sidebar/theme.conf`; durante l’apertura di file chooser e dialoghi di sistema il tema viene sospeso temporaneamente.
-- **Layout persistente:** `~/.config/antix-sidebar/layout.conf` salva larghezza, lingua, tema, visibilità e ordine dei widget.
-- **Dialog Personalizza:** permette di scegliere la lingua (11 lingue), il tema CSS, la visibilità e l’ordine dei widget tramite frecce ↑/↓.
-- **Ottimizzazioni:** cache degli atom X11, debounce in `apply_always_on_top()`, scrolling kinetic/overlay disabilitato per IceWM, polling audio ogni 3 secondi e richieste di rete asincrone con timeout e annullamento.
-- **Tema scuro navy:** stile coerente con antiX, con accenti blu (`#2196F3`).
+- **Always on top:** keeps the window above others (`_NET_WM_STATE_ABOVE`), with a periodic check every 30 seconds.
+- **Visible on all desktops:** sticky dock across workspaces (`_NET_WM_DESKTOP` = `0xFFFFFFFF`).
+- **Reserves screen space:** uses `_NET_WM_STRUT_PARTIAL` to prevent windows from being covered.
+- **Overlay mode:** displays the sidebar without reserving screen space.
+- **Single instance:** prevents duplicate instances using a lock file (`flock`).
+- **Dynamic resizing:** resize by dragging the side grip, from 140 to 560 px; the initial width is 190 px. Applies different CSS classes (`.compact` below 175 px and `.wide` above 330 px).
+- **Does not steal focus:** the window does not accept focus from the window manager (`accept-focus` and `focus-on-map` are disabled); keyboard focus is limited to interactive controls.
+- **Theme management:** supports CSS files in the `themes/` directory; the theme name is read from the file’s opening comment. The CSS provider is replaced without accumulating providers. The selected theme is saved in `~/.config/antix-sidebar/theme.conf`; the theme is temporarily suspended while file choosers and system dialogs are open.
+- **Persistent layout:** `~/.config/antix-sidebar/layout.conf` saves the width, language, theme, widget visibility, and widget order.
+- **Customize dialog:** lets users choose from 11 languages, select a CSS theme, toggle widget visibility, and reorder widgets using the ↑/↓ arrows.
+- **Optimizations:** X11 atom caching, debounce in `apply_always_on_top()`, kinetic/overlay scrolling disabled for IceWM, audio polling every 3 seconds, and asynchronous network requests with timeouts and cancellation.
+- **Dark navy theme:** a style that matches antiX, with blue accents (`#2196F3`).
 
-## Widget
+## Widgets
 
-### Meteo
+### Weather
 
-- Dati da **wttr.in** con formato personalizzato: `%C|%t|%f|%h|%w|%P|%p|%u|%c|%l`.
-- La risposta HTTP viene elaborata in un thread di lavoro dedicato, con callback tramite `g_idle_add`.
-- La località si modifica dal pulsante 📍 e viene salvata in `~/.config/antix-sidebar/weather.ini`.
-- Aggiornamento manuale tramite ↻; la richiesta in corso può essere annullata.
-- Icone meteo dedicate in `src/icons`, con riconoscimento delle condizioni in italiano e inglese e fallback sull’emoji.
-- Riga ↑max/↓min predisposta per quando il client fornirà i dati giornalieri.
+- Fetches data from **wttr.in** using a custom format: `%C|%t|%f|%h|%w|%P|%p|%u|%c|%l`.
+- The HTTP response is processed in a dedicated worker thread, with callbacks via `g_idle_add`.
+- Set the location using the 📍 button. It is saved in `~/.config/antix-sidebar/weather.ini`.
+- Refresh manually using ↻; an in-progress request can be cancelled.
+- Dedicated weather icons are stored in `src/icons`. Conditions are recognized in English and Italian, with emoji as a fallback.
+- A ↑max/↓min row is prepared for when the client provides daily data.
 
-### Notizie
+### News
 
-- Feed RSS: `feeds.bbci.co.uk/news/world/rss.xml`, con un massimo di 3 titoli.
-- Recupero asincrono tramite GTask, limite di 64 KB e timeout di 3 + 5 secondi.
-- I titoli sono cliccabili e si aprono nel browser predefinito; gli URL vengono validati con GUri.
+- RSS feed: `feeds.bbci.co.uk/news/world/rss.xml`, with a maximum of 3 headlines.
+- Asynchronous fetching via GTask, a 64 KB limit, and a 3 + 5 second timeout.
+- Headlines are clickable and open in the default browser; URLs are validated with GUri.
 
 ### Audio
 
-- Una singola chiamata a `playerctl metadata` recupera i dati nel formato `status|title|artist|album|volume|position|length`.
-- Include barra di avanzamento del brano, slider del volume e polling ogni 3 secondi.
+- A single `playerctl metadata` call retrieves data in the format `status|title|artist|album|volume|position|length`.
+- Includes a track progress bar, a volume slider, and polling every 3 seconds.
 
-### Calendario
+### Calendar
 
-- `GtkCalendar` con navigazione ◀/▶ tra mesi e anni.
-- Etichetta del mese tradotta tramite gettext.
-- `LC_TIME` viene impostato in base alla lingua scelta, con fallback a `C`.
-- Un aggiornamento ogni 60 secondi aggiorna automaticamente il giorno corrente.
+- `GtkCalendar` with ◀/▶ navigation between months and years.
+- The month label is translated using gettext.
+- `LC_TIME` is set according to the selected language, with a fallback to `C`.
+- An update every 60 seconds automatically refreshes the current day.
 
-## Lingue
+## Languages
 
-Italiano, English, Deutsch, Español, Français, 日本語, Nederlands, Polski, Português, Русский e Українська.
+Italian, English, German, Spanish, French, Japanese, Dutch, Polish, Portuguese, Russian, and Ukrainian.
 
-La lingua si sceglie dal dialog **Personalizza**. Le etichette usano gettext con il dominio `antix-sidebar`.
+Choose the language from the **Customize** dialog. Labels use gettext with the `antix-sidebar` domain.
 
-## Temi
+## Themes
 
-La directory dei temi viene individuata nel seguente ordine:
+The themes directory is resolved in the following order:
 
-1. Variabile d’ambiente `ANTIX_SIDEBAR_THEMES_DIR`
+1. `ANTIX_SIDEBAR_THEMES_DIR` environment variable
 2. `<exe_dir>/themes`
 3. `<exe_dir>/../share/antix-sidebar/themes`
 4. `/usr/local/share/antix-sidebar/themes`
 5. `/usr/share/antix-sidebar/themes`
 
-Ogni file `.css` è considerato un tema. Il nome mostrato nel menu viene letto dal commento CSS all’inizio del file, per esempio `/* Nome Tema */`.
+Each `.css` file is treated as a theme. The name shown in the menu is read from a CSS comment at the beginning of the file, for example `/* Theme Name */`.
 
-I temi predefiniti preferiti sono `dark-navy` e `violet-night`. Il tema selezionato viene salvato automaticamente.
+The preferred default themes are `dark-navy` and `violet-night`. The selected theme is saved automatically.
 
-### Variabili d’ambiente
+### Environment variables
 
-| Variabile | Funzione |
+| Variable | Purpose |
 |---|---|
-| `ANTIX_SIDEBAR_THEMES_DIR` | Directory alternativa dei temi |
-| `ANTIX_SIDEBAR_CSS` | File CSS da applicare all’avvio, in override al tema |
-| `ANTIX_SIDEBAR_LOCALEDIR` | Directory alternativa delle traduzioni |
+| `ANTIX_SIDEBAR_THEMES_DIR` | Alternative themes directory |
+| `ANTIX_SIDEBAR_CSS` | CSS file to apply at startup, overriding the selected theme |
+| `ANTIX_SIDEBAR_LOCALEDIR` | Alternative translations directory |
 
-## Struttura del progetto
+## Project structure
 
 ```text
-antiX\_sidebar/
-├── CMakeLists.txt              # sistema di build CMake
-├── style.css                   # tema CSS GTK
-├── antix-sidebar.desktop       # voce del menu applicazioni XDG
-├── themes/                      # temi CSS della sidebar
+antiX_sidebar/
+├── CMakeLists.txt              # CMake build configuration
+├── style.css                   # GTK CSS theme
+├── antix-sidebar.desktop       # XDG application menu entry
+├── themes/                      # Sidebar CSS themes
 ├── tools/
-│   ├── install.sh              # installazione di sistema
-│   ├── uninstall.sh            # rimozione completa
-│   ├── reset-workarea.sh       # reset workarea se bloccata da strut
-│   ├── start-sidebar.sh        # avvio comodo con opzione overlay
-│   └── autostart-setup.sh      # configurazione autostart IceWM
+│   ├── install.sh              # System installation
+│   ├── uninstall.sh            # Complete removal
+│   ├── reset-workarea.sh       # Reset the work area if blocked by a strut
+│   ├── start-sidebar.sh        # Convenient startup with overlay option
+│   └── autostart-setup.sh      # IceWM autostart configuration
 └── src/
-    ├── main.cpp                # entry point e flock per istanza singola
-    ├── i18n.h                  # macro gettext
-    ├── sidebar.h / .cpp        # finestra principale, hint EWMH e dialog Personalizza
-    ├── theme\_manager.h / .cpp  # gestione temi, directory e persistenza
+    ├── main.cpp                # Entry point and flock single-instance lock
+    ├── i18n.h                  # gettext macros
+    ├── sidebar.h / .cpp        # Main window, EWMH hints, and Customize dialog
+    ├── theme_manager.h / .cpp  # Theme, directory, and persistence management
     └── widgets/
-        ├── calendar\_widget.h / .cpp
-        ├── weather\_widget.h / .cpp
-        ├── open\_meteo\_client.h / .cpp
-        ├── news\_widget.h / .cpp
-        ├── audio\_control\_widget.h / .cpp
-        └── icons/              # icone meteo (nomi EN/IT)
+        ├── calendar_widget.h / .cpp
+        ├── weather_widget.h / .cpp
+        ├── open_meteo_client.h / .cpp
+        ├── news_widget.h / .cpp
+        ├── audio_control_widget.h / .cpp
+        └── icons/              # Weather icons (EN/IT names)
+```
+
+## Customization
+
+Click the ⚙ button in the sidebar header to open the **Customize** dialog. From there, you can:
+
+- change the language;
+- choose an available CSS theme or load a local CSS file using the file chooser;
+- show or hide the Audio, Calendar, Weather, and News widgets;
+- reorder widgets using the ↑/↓ arrows.
+
+Settings are saved in `~/.config/antix-sidebar/`:
+
+- `theme.conf`: selected theme;
+- `layout.conf`: width, language, widget visibility, and widget order;
+- `weather.ini`: weather location.
+
+## Dependencies
+
+Install the build dependencies with:
+
+```bash
+sudo apt install cmake pkg-config libgtk-3-dev libcairo2-dev \
+                 libcurl4-openssl-dev libxml2-dev libx11-dev
+```
+
+The Audio widget also requires `playerctl`:
+
+```bash
+sudo apt install playerctl
+```
+
+### Minimum versions
+
+- GTK 3.24+
+- Cairo 1.16+
+- CMake 3.16+
+- IceWM 1.7+ (or an EWMH-compliant window manager)

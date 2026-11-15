@@ -7,11 +7,7 @@ class AudioControlWidget {
 public:
     static AudioControlWidget* create();
     GtkWidget* widget() const { return container; }
-
-    // Chiamare quando il widget non serve più.
     void free_resources();
-
-    // Aggiorna tutte le stringhe visibili nella lingua indicata ("it"/"en").
     void set_language(const std::string& lang);
 
 private:
@@ -27,6 +23,7 @@ private:
 
     static void run_playerctl(const char* command);
     static std::string read_playerctl(const char* command);
+
     void update();
 
     GtkWidget* container = nullptr;
@@ -36,16 +33,14 @@ private:
     GtkWidget* progress_playback = nullptr;
     GtkWidget* progress_volume = nullptr;
     GtkWidget* btn_play_pause = nullptr;
+    GtkWidget* lbl_volume = nullptr;
 
     guint update_timer_id = 0;
-    bool updating_controls = false;
     bool alive = true;
 
     std::string language = "it";
-
     std::string last_title;
     std::string last_artist;
     std::string last_album;
     std::string last_status;
-    std::string last_volume;
 };

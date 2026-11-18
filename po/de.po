@@ -1,10 +1,15 @@
+# German translations for antix-sidebar package.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the antix-sidebar package.
+# FIRST AUTHOR <vortix.studio@ik.me>, 2026.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-sidebar 1.0.0\n"
-"Report-Msgid-Bugs-To: diego@example.com\n"
-"POT-Creation-Date: 2026-11-04 18:00+0000\n"
-"PO-Revision-Date: 2026-11-04 18:00+0000\n"
-"Last-Translator: FULL NAME <diego@example.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 16:25+0100\n"
+"PO-Revision-Date: 2026-11-13 15:40+0000\n"
+"Last-Translator: diego <diego@example.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -12,67 +17,326 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/widgets/weather_widget.cpp
-msgid "Location"
-msgstr "Standort"
+#: src/widgets/calendar_widget.cpp:18
+msgid "January"
+msgstr "Januar"
 
-msgid "Change Location"
-msgstr "Standort ändern"
+#: src/widgets/calendar_widget.cpp:18
+msgid "February"
+msgstr "Februar"
 
-msgid "-- °C"
-msgstr "-- °C"
+#: src/widgets/calendar_widget.cpp:18
+msgid "March"
+msgstr "März"
 
-msgid "Waiting for weather data..."
-msgstr "Wetterdaten werden abgerufen..."
+#: src/widgets/calendar_widget.cpp:18
+msgid "April"
+msgstr "April"
 
+#: src/widgets/calendar_widget.cpp:19
+msgid "May"
+msgstr "Mai"
+
+#: src/widgets/calendar_widget.cpp:19
+msgid "June"
+msgstr "Juni"
+
+#: src/widgets/calendar_widget.cpp:19
+msgid "July"
+msgstr "Juli"
+
+#: src/widgets/calendar_widget.cpp:19
+msgid "August"
+msgstr "August"
+
+#: src/widgets/calendar_widget.cpp:20
+msgid "September"
+msgstr "September"
+
+#: src/widgets/calendar_widget.cpp:20
+msgid "October"
+msgstr "Oktober"
+
+#: src/widgets/calendar_widget.cpp:20
+msgid "November"
+msgstr "November"
+
+#: src/widgets/calendar_widget.cpp:20
+msgid "December"
+msgstr "Dezember"
+
+# Ein Wort: Der erste Buchstabe wird als Überschrift des Rasters verwendet.
+#: src/widgets/calendar_widget.cpp:25
+msgid "Mon"
+msgstr "Mo"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Tue"
+msgstr "Di"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Wed"
+msgstr "Mi"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Thu"
+msgstr "Do"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Fri"
+msgstr "Fr"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Sat"
+msgstr "Sa"
+
+#: src/widgets/calendar_widget.cpp:25
+msgid "Sun"
+msgstr "So"
+
+#: src/widgets/calendar_widget.cpp:243
+msgid "(Untitled event)"
+msgstr "(Ereignis ohne Titel)"
+
+#: src/widgets/calendar_widget.cpp:367 src/widgets/calendar_widget.cpp:455
+msgid "Previous month"
+msgstr "Vorheriger Monat"
+
+#: src/widgets/calendar_widget.cpp:379 src/widgets/calendar_widget.cpp:457
+msgid "Next month"
+msgstr "Nächster Monat"
+
+#: src/widgets/calendar_widget.cpp:398 src/widgets/calendar_widget.cpp:463
+msgid "Calendars"
+msgstr "Kalender"
+
+#: src/widgets/calendar_widget.cpp:405 src/widgets/calendar_widget.cpp:459
+msgid "Today"
+msgstr "Heute"
+
+#: src/widgets/calendar_widget.cpp:412 src/widgets/calendar_widget.cpp:461
+#: src/widgets/weather_widget.cpp:203 src/widgets/weather_widget.cpp:346
 msgid "Refresh"
 msgstr "Aktualisieren"
 
+#: src/widgets/calendar_widget.cpp:437 src/widgets/calendar_widget.cpp:465
+msgid "Double-click a day to see its events"
+msgstr "Doppelklicken Sie auf einen Tag, um seine Ereignisse anzuzeigen"
+
+#: src/widgets/calendar_widget.cpp:683
+#, c-format
+msgid "Events for %02d/%02d/%04d"
+msgstr "Ereignisse am %02d.%02d.%04d"
+
+#: src/widgets/calendar_widget.cpp:694 src/widgets/calendar_widget.cpp:885
+msgid "Close"
+msgstr "Schließen"
+
+#: src/widgets/calendar_widget.cpp:707
+msgid "No events"
+msgstr "Keine Ereignisse"
+
+#: src/widgets/calendar_widget.cpp:823
+msgid "Rename calendar"
+msgstr "Kalender umbenennen"
+
+#: src/widgets/calendar_widget.cpp:829 src/widgets/calendar_widget.cpp:999
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/widgets/calendar_widget.cpp:836
+msgid "OK"
+msgstr "OK"
+
+#: src/widgets/calendar_widget.cpp:879
+msgid "Saved calendars"
+msgstr "Gespeicherte Kalender"
+
+#: src/widgets/calendar_widget.cpp:901
+msgid "Add calendar"
+msgstr "Kalender hinzufügen"
+
+#: src/widgets/calendar_widget.cpp:916
+msgid "No calendars configured"
+msgstr "Keine Kalender eingerichtet"
+
+#: src/widgets/calendar_widget.cpp:935
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: src/widgets/calendar_widget.cpp:947
+msgid "Remove"
+msgstr "Entfernen"
+
+#: src/widgets/calendar_widget.cpp:993
+msgid "Add network calendar"
+msgstr "Netzwerkkalender hinzufügen"
+
+#: src/widgets/calendar_widget.cpp:1006
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: src/widgets/calendar_widget.cpp:1018
+msgid "Calendar name:"
+msgstr "Kalendername:"
+
+#: src/widgets/calendar_widget.cpp:1025
+msgid "My calendar"
+msgstr "Mein Kalender"
+
+#: src/widgets/calendar_widget.cpp:1028
+msgid "Paste the URL of an .ics calendar:"
+msgstr "Fügen Sie die URL eines .ics-Kalenders ein:"
+
+#: src/widgets/calendar_widget.cpp:1053
+msgid "Network calendar"
+msgstr "Netzwerkkalender"
+
+#: src/widgets/weather_widget.cpp:137
+msgid "Change Location"
+msgstr "Standort ändern"
+
+#: src/widgets/weather_widget.cpp:192 src/widgets/weather_widget.cpp:349
 msgid "Change location"
 msgstr "Standort ändern"
 
-msgid "Enter a location"
-msgstr "Standort eingeben"
+#: src/widgets/weather_widget.cpp:223 src/widgets/weather_widget.cpp:292
+msgid "-- °C"
+msgstr "-- °C"
 
+#: src/widgets/weather_widget.cpp:227 src/widgets/weather_widget.cpp:315
+msgid "Waiting for weather data..."
+msgstr "Wetterdaten werden abgerufen..."
+
+#: src/widgets/weather_widget.cpp:279
+msgid "Meteo"
+msgstr "Wetter"
+
+#: src/widgets/weather_widget.cpp:319
 msgid "Loading..."
 msgstr "Wird geladen..."
 
+#: src/widgets/weather_widget.cpp:323
+msgid "Enter a location"
+msgstr "Standort eingeben"
+
+#: src/widgets/weather_widget.cpp:327
 msgid "Weather data not available"
 msgstr "Wetterdaten nicht verfügbar"
 
-#: src/widgets/news_widget.cpp
-msgid "News"
-msgstr "Nachrichten"
-
-msgid "Refresh news"
-msgstr "Nachrichten aktualisieren"
-
-msgid "More news ›"
-msgstr "Weitere Nachrichten ›"
-
-msgid "News not available"
-msgstr "Nachrichten nicht verfügbar"
-
-#: src/widgets/calendar_widget.cpp
-msgid "📍 Today"
-msgstr "📍 Heute"
-
-#: src/widgets/audio_control_widget.cpp
+#: src/widgets/audio_control_widget.cpp:178
+#: src/widgets/audio_control_widget.cpp:339
 msgid "Audio Control"
 msgstr "Audiosteuerung"
 
+#: src/widgets/audio_control_widget.cpp:194
+#: src/widgets/audio_control_widget.cpp:408
+#: src/widgets/audio_control_widget.cpp:432
 msgid "No track"
 msgstr "Kein Titel"
 
-#: src/sidebar.cpp
+#: src/widgets/audio_control_widget.cpp:248
+#: src/widgets/audio_control_widget.cpp:342
+msgid "Previous track"
+msgstr "Vorheriger Titel"
+
+#: src/widgets/audio_control_widget.cpp:249
+#: src/widgets/audio_control_widget.cpp:344
+msgid "Play or pause"
+msgstr "Wiedergabe oder Pause"
+
+#: src/widgets/audio_control_widget.cpp:250
+#: src/widgets/audio_control_widget.cpp:346
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: src/widgets/audio_control_widget.cpp:251
+#: src/widgets/audio_control_widget.cpp:348
+msgid "Next track"
+msgstr "Nächster Titel"
+
+#: src/widgets/audio_control_widget.cpp:267
+#: src/widgets/audio_control_widget.cpp:350
+msgid "Volume"
+msgstr "Lautstärke"
+
+#: src/widgets/news_widget.cpp:242 src/widgets/news_widget.cpp:317
+#: src/sidebar.cpp:822
+msgid "News"
+msgstr "Nachrichten"
+
+#: src/widgets/news_widget.cpp:258 src/widgets/news_widget.cpp:327
+msgid "Refresh news"
+msgstr "Nachrichten aktualisieren"
+
+#: src/widgets/news_widget.cpp:290 src/widgets/news_widget.cpp:322
+msgid "More news ›"
+msgstr "Weitere Nachrichten ›"
+
+#: src/widgets/news_widget.cpp:415
+msgid "News not available"
+msgstr "Nachrichten nicht verfügbar"
+
+#: src/sidebar.cpp:559 src/sidebar.cpp:694 src/sidebar.cpp:716
 msgid "Customize sidebar"
 msgstr "Seitenleiste anpassen"
 
+#: src/sidebar.cpp:566 src/sidebar.cpp:697
 msgid "Close sidebar"
 msgstr "Seitenleiste schließen"
 
+#: src/sidebar.cpp:719 src/sidebar.cpp:930
+msgid "_Cancel"
+msgstr "_Abbrechen"
+
+#: src/sidebar.cpp:721
+msgid "_Apply"
+msgstr "_Anwenden"
+
+#: src/sidebar.cpp:735
 msgid "Language"
 msgstr "Sprache"
 
+#: src/sidebar.cpp:759
 msgid "Sidebar Theme (CSS)"
 msgstr "Design der Seitenleiste (CSS)"
+
+#: src/sidebar.cpp:774
+msgid "Custom local file…"
+msgstr "Eigene lokale Datei…"
+
+#: src/sidebar.cpp:785
+msgid "Browse CSS files…"
+msgstr "CSS-Dateien durchsuchen…"
+
+#: src/sidebar.cpp:806
+msgid "Visible widgets and order"
+msgstr "Sichtbare Widgets und Reihenfolge"
+
+#: src/sidebar.cpp:822
+msgid "Audio"
+msgstr "Audio"
+
+#: src/sidebar.cpp:822
+msgid "Calendar"
+msgstr "Kalender"
+
+#: src/sidebar.cpp:822
+msgid "Weather"
+msgstr "Wetter"
+
+#: src/sidebar.cpp:853
+msgid "Move up"
+msgstr "Nach oben verschieben"
+
+#: src/sidebar.cpp:854
+msgid "Move down"
+msgstr "Nach unten verschieben"
+
+#: src/sidebar.cpp:927
+msgid "Select CSS file"
+msgstr "CSS-Datei auswählen"
+
+#: src/sidebar.cpp:931
+msgid "_Open"
+msgstr "Ö_ffnen"

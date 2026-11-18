@@ -322,8 +322,8 @@ void local_today(int& year, int& month, int& day) // month 1-12
 }
 
 // Colori del calendario, decisi dal tema CSS:
-//   @define-color calendar_accent     ...  (oggi + cerchio di selezione)
-//   @define-color calendar_event_day  ...  (numero dei giorni con eventi)
+// @define-color calendar_accent     ...  (oggi + cerchio di selezione)
+// @define-color calendar_event_day  ...  (numero dei giorni con eventi)
 // Fallback: theme_selected_bg_color, poi un viola fisso.
 GdkRGBA calendar_accent(GtkStyleContext* sc)
 {
@@ -355,12 +355,15 @@ CalendarWidget* CalendarWidget::create()
 
     cw->container = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
     gtk_widget_set_name(cw->container, "calendar-box");
-    gtk_widget_set_halign(cw->container, GTK_ALIGN_CENTER);
+    gtk_widget_set_halign(cw->container, GTK_ALIGN_FILL);
 
+    // ---------- header ----------
     GtkWidget* header = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
     gtk_widget_set_name(header, "calendar-header");
-    gtk_widget_set_halign(header, GTK_ALIGN_CENTER);
+    gtk_widget_set_halign(header, GTK_ALIGN_FILL);
+    gtk_widget_set_hexpand(header, TRUE);
 
+    // --- navigazione mese, centrata ---
     cw->btn_prev = make_icon_button("go-previous-symbolic", _("Previous month"));
     gtk_widget_set_size_request(cw->btn_prev, 28, 28);
     g_signal_connect(
@@ -380,9 +383,42 @@ CalendarWidget* CalendarWidget::create()
         G_CALLBACK(CalendarWidget::on_next_clicked), cw
     );
 
-    gtk_box_pack_start(GTK_BOX(header), cw->btn_prev, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(header), cw->lbl_month, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(header), cw->btn_next, FALSE, FALSE, 0);
+    GtkWidget* nav_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+    gtk_widget_set_halign(nav_box, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign(nav_box, GTK_ALIGN_CENTER);
+    gtk_box_pack_start(GTK_BOX(nav_box), cw->btn_prev, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(nav_box), cw->lbl_month, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(nav_box), cw->btn_next, FALSE, FALSE, 0);
+
+    // --- pulsanti in alto a destra: Calendars, Today, Refresh ---
+    GtkWidget* actions_right = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 4);
+    gtk_widget_set_valign(actions_right, GTK_ALIGN_CENTER);
+
+    cw->btn_calendars =
+        make_icon_button("x-office-calendar-symbolic", _("Calendars"));
+    g_signal_connect(
+        cw->btn_calendars, "clicked",
+        G_CALLBACK(CalendarWidget::on_calendars_clicked), cw
+    );
+    gtk_box_pack_start(GTK_BOX(actions_right), cw->btn_calendars, FALSE, FALSE, 0);
+
+    cw->btn_today = make_icon_button("go-today-symbolic", _("Today"));
+    g_signal_connect(
+        cw->btn_today, "clicked",
+        G_CALLBACK(CalendarWidget::on_today_clicked), cw
+    );
+    gtk_box_pack_start(GTK_BOX(actions_right), cw->btn_today, FALSE, FALSE, 0);
+
+    cw->btn_refresh = make_icon_button("view-refresh-symbolic", _("Refresh"));
+    g_signal_connect(
+        cw->btn_refresh, "clicked",
+        G_CALLBACK(CalendarWidget::on_refresh_clicked), cw
+    );
+    gtk_box_pack_start(GTK_BOX(actions_right), cw->btn_refresh, FALSE, FALSE, 0);
+
+    gtk_box_pack_start(GTK_BOX(header), nav_box, TRUE, TRUE, 0);
+    gtk_box_pack_end(GTK_BOX(header), actions_right, FALSE, FALSE, 0);
+
     gtk_box_pack_start(GTK_BOX(cw->container), header, FALSE, FALSE, 0);
 
     // Griglia disegnata a mano: permette di colorare i giorni con eventi
@@ -398,50 +434,10 @@ CalendarWidget* CalendarWidget::create()
 
     gtk_box_pack_start(GTK_BOX(cw->container), cw->grid, FALSE, FALSE, 0);
 
-    // Riga azioni: Today + Refresh (icone)
-    GtkWidget* action_row = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-
-    cw->btn_today = make_icon_button("go-today-symbolic", _("Today"));
-    g_signal_connect(
-        cw->btn_today, "clicked",
-        G_CALLBACK(CalendarWidget::on_today_clicked), cw
-    );
-
-    cw->btn_refresh = make_icon_button("view-refresh-symbolic", _("Refresh"));
-    g_signal_connect(
-        cw->btn_refresh, "clicked",
-        G_CALLBACK(CalendarWidget::on_refresh_clicked), cw
-    );
-
-    gtk_box_pack_start(GTK_BOX(action_row), cw->btn_today, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(action_row), cw->btn_refresh, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(cw->container), action_row, FALSE, FALSE, 2);
-
-    GtkWidget* hint = gtk_label_new(_("Double-click a day to see its events"));
-    gtk_widget_set_name(hint, "calendar-hint-label");
-    gtk_widget_set_halign(hint, GTK_ALIGN_CENTER);
-    gtk_box_pack_start(GTK_BOX(cw->container), hint, FALSE, FALSE, 0);
-
-    // Riga gestione calendari: elenco + aggiunta (icone)
-    GtkWidget* btn_row = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-
-    GtkWidget* btn_list =
-        make_icon_button("x-office-calendar-symbolic", _("Calendars"));
-    g_signal_connect(
-        btn_list, "clicked",
-        G_CALLBACK(CalendarWidget::on_calendars_clicked), cw
-    );
-
-    GtkWidget* btn_add_calendar =
-        make_icon_button("list-add-symbolic", _("Add calendar"));
-    g_signal_connect(
-        btn_add_calendar, "clicked",
-        G_CALLBACK(CalendarWidget::on_add_calendar_clicked), cw
-    );
-
-    gtk_box_pack_start(GTK_BOX(btn_row), btn_list, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(btn_row), btn_add_calendar, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(cw->container), btn_row, FALSE, FALSE, 2);
+    cw->lbl_hint = gtk_label_new(_("Double-click a day to see its events"));
+    gtk_widget_set_name(cw->lbl_hint, "calendar-hint-label");
+    gtk_widget_set_halign(cw->lbl_hint, GTK_ALIGN_CENTER);
+    gtk_box_pack_start(GTK_BOX(cw->container), cw->lbl_hint, FALSE, FALSE, 0);
 
     // Carica i calendari salvati da ~/.config/antix-sidebar/calendars.conf
     cw->load_sources();
@@ -455,10 +451,18 @@ void CalendarWidget::set_language(const std::string& lang)
 {
     language = lang;
 
+    if (btn_prev)
+        gtk_widget_set_tooltip_text(btn_prev, _("Previous month"));
+    if (btn_next)
+        gtk_widget_set_tooltip_text(btn_next, _("Next month"));
     if (btn_today)
         gtk_widget_set_tooltip_text(btn_today, _("Today"));
     if (btn_refresh)
         gtk_widget_set_tooltip_text(btn_refresh, _("Refresh"));
+    if (btn_calendars)
+        gtk_widget_set_tooltip_text(btn_calendars, _("Calendars"));
+    if (lbl_hint)
+        gtk_label_set_text(GTK_LABEL(lbl_hint), _("Double-click a day to see its events"));
 
     update_calendar();
 }
@@ -890,6 +894,24 @@ void CalendarWidget::show_calendars_dialog()
     gtk_box_set_spacing(GTK_BOX(content), 6);
     gtk_container_set_border_width(GTK_CONTAINER(content), 12);
 
+    // Riga "+" in alto a destra della lista
+    GtkWidget* top_row = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+
+    GtkWidget* add_btn =
+        make_icon_button("list-add-symbolic", _("Add calendar"));
+    auto* ad = static_cast<SourceRow*>(g_malloc(sizeof(SourceRow)));
+    ad->cw = this;
+    ad->index = -1;         // non usato da questo handler
+    ad->dialog = dialog;
+    g_signal_connect_data(
+        add_btn, "clicked",
+        G_CALLBACK(on_add_source_clicked),
+        ad, free_source_row, (GConnectFlags)0
+    );
+    gtk_box_pack_end(GTK_BOX(top_row), add_btn, FALSE, FALSE, 0);
+
+    gtk_box_pack_start(GTK_BOX(content), top_row, FALSE, FALSE, 0);
+
     if (sources.empty()) {
         GtkWidget* empty = gtk_label_new(_("No calendars configured"));
         gtk_widget_set_halign(empty, GTK_ALIGN_START);
@@ -939,8 +961,8 @@ void CalendarWidget::show_calendars_dialog()
 
     gtk_widget_show_all(dialog);
 
-    // "Remove" risponde APPLY: il sorgente è già stato eliminato dal
-    // gestore del segnale, riapri la finestra aggiornata.
+    // "Remove" e "+" rispondono APPLY: il sorgente è già stato aggiornato
+    // dal gestore del segnale, riapri la finestra aggiornata.
     const gint response = gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
 
@@ -952,6 +974,15 @@ void CalendarWidget::on_calendars_clicked(GtkButton*, gpointer data)
 {
     auto* cw = static_cast<CalendarWidget*>(data);
     cw->show_calendars_dialog();
+}
+
+// Il "+" nella dialog calendari: apre la dialog di aggiunta,
+// poi riapre la lista aggiornata tramite la risposta APPLY.
+void CalendarWidget::on_add_source_clicked(GtkButton*, gpointer data)
+{
+    auto* rd = static_cast<SourceRow*>(data);
+    CalendarWidget::on_add_calendar_clicked(nullptr, rd->cw);
+    gtk_dialog_response(GTK_DIALOG(rd->dialog), GTK_RESPONSE_APPLY);
 }
 
 void CalendarWidget::on_add_calendar_clicked(GtkButton*, gpointer data)

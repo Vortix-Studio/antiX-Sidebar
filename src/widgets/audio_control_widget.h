@@ -27,12 +27,17 @@ private:
     void update();
 
     GtkWidget* container = nullptr;
+    GtkWidget* lbl_heading = nullptr;
     GtkWidget* lbl_song = nullptr;
     GtkWidget* lbl_artist = nullptr;
     GtkWidget* lbl_album = nullptr;
     GtkWidget* progress_playback = nullptr;
     GtkWidget* progress_volume = nullptr;
+    GtkWidget* btn_prev = nullptr;
     GtkWidget* btn_play_pause = nullptr;
+    GtkWidget* btn_stop = nullptr;
+    GtkWidget* btn_next = nullptr;
+    GtkWidget* icon_volume = nullptr;
     GtkWidget* lbl_volume = nullptr;
 
     guint update_timer_id = 0;

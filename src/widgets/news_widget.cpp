@@ -243,7 +243,15 @@ NewsWidget* NewsWidget::create()
     gtk_widget_set_name(self->lbl_title, "news-title");
     gtk_widget_set_halign(self->lbl_title, GTK_ALIGN_START);
 
-    self->refresh_button = gtk_button_new_with_label("↻");
+    self->refresh_button = gtk_button_new();
+
+GtkWidget* refresh_icon = gtk_image_new_from_icon_name(
+    "view-refresh-symbolic",
+    GTK_ICON_SIZE_BUTTON);
+
+gtk_button_set_image(GTK_BUTTON(self->refresh_button), refresh_icon);
+gtk_widget_set_name(self->refresh_button, "news-refresh-btn");
+
     gtk_widget_set_name(self->refresh_button, "news-refresh-btn");
     gtk_widget_set_tooltip_text(
         self->refresh_button,

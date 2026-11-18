@@ -175,7 +175,8 @@ AudioControlWidget* AudioControlWidget::create() {
     self->container = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
     gtk_widget_set_name(self->container, "audio-widget");
 
-    GtkWidget* heading = gtk_label_new("Controllo audio");
+    GtkWidget* heading = gtk_label_new(_("Audio Control"));
+    self->lbl_heading = heading;
     gtk_widget_set_name(heading, "audio-heading");
     gtk_widget_set_halign(heading, GTK_ALIGN_START);
     gtk_box_pack_start(GTK_BOX(self->container), heading, FALSE, FALSE, 0);
@@ -190,7 +191,7 @@ AudioControlWidget* AudioControlWidget::create() {
     GtkWidget* metadata = gtk_box_new(GTK_ORIENTATION_VERTICAL, 2);
     gtk_widget_set_hexpand(metadata, TRUE);
 
-    self->lbl_song = gtk_label_new("Nessun brano");
+    self->lbl_song = gtk_label_new(_("No track"));
     self->lbl_artist = gtk_label_new("");
     self->lbl_album = gtk_label_new("");
 
@@ -222,21 +223,21 @@ AudioControlWidget* AudioControlWidget::create() {
     GtkWidget* controls = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
     gtk_widget_set_halign(controls, GTK_ALIGN_CENTER);
 
-    GtkWidget* previous = gtk_button_new_with_label("⏮");
+    self->btn_prev = gtk_button_new_with_label("⏮");
     self->btn_play_pause = gtk_button_new_with_label("▶");
-    GtkWidget* stop = gtk_button_new_with_label("■");
-    GtkWidget* next = gtk_button_new_with_label("⏭");
+    self->btn_stop = gtk_button_new_with_label("■");
+    self->btn_next = gtk_button_new_with_label("⏭");
 
-    gtk_widget_set_name(previous, "audio-prev-button");
+    gtk_widget_set_name(self->btn_prev, "audio-prev-button");
     gtk_widget_set_name(self->btn_play_pause, "audio-play-button");
-    gtk_widget_set_name(stop, "audio-stop-button");
-    gtk_widget_set_name(next, "audio-next-button");
+    gtk_widget_set_name(self->btn_stop, "audio-stop-button");
+    gtk_widget_set_name(self->btn_next, "audio-next-button");
 
     GtkWidget* buttons[] = {
-        previous,
+        self->btn_prev,
         self->btn_play_pause,
-        stop,
-        next
+        self->btn_stop,
+        self->btn_next
     };
 
     for (GtkWidget* button : buttons) {
@@ -244,27 +245,27 @@ AudioControlWidget* AudioControlWidget::create() {
         gtk_box_pack_start(GTK_BOX(controls), button, FALSE, FALSE, 0);
     }
 
-    gtk_widget_set_tooltip_text(previous, "Traccia precedente");
-gtk_widget_set_tooltip_text(self->btn_play_pause, "Riproduci o pausa");
-gtk_widget_set_tooltip_text(stop, "Ferma riproduzione");
-gtk_widget_set_tooltip_text(next, "Traccia successiva");
+    gtk_widget_set_tooltip_text(self->btn_prev, _("Previous track"));
+    gtk_widget_set_tooltip_text(self->btn_play_pause, _("Play or pause"));
+    gtk_widget_set_tooltip_text(self->btn_stop, _("Stop playback"));
+    gtk_widget_set_tooltip_text(self->btn_next, _("Next track"));
 
     g_signal_connect(
-        previous, "clicked", G_CALLBACK(on_previous_clicked), self);
+        self->btn_prev, "clicked", G_CALLBACK(on_previous_clicked), self);
     g_signal_connect(
         self->btn_play_pause, "clicked",
         G_CALLBACK(on_play_pause_clicked), self);
     g_signal_connect(
-        stop, "clicked", G_CALLBACK(on_stop_clicked), self);
+        self->btn_stop, "clicked", G_CALLBACK(on_stop_clicked), self);
     g_signal_connect(
-        next, "clicked", G_CALLBACK(on_next_clicked), self);
+        self->btn_next, "clicked", G_CALLBACK(on_next_clicked), self);
 
     gtk_box_pack_start(GTK_BOX(self->container), controls, FALSE, FALSE, 0);
 
     GtkWidget* volume_row = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
-    GtkWidget* volume_icon = gtk_label_new("🔊");
-    gtk_widget_set_tooltip_text(volume_icon, "Volume");
-    gtk_box_pack_start(GTK_BOX(volume_row), volume_icon, FALSE, FALSE, 0);
+    self->icon_volume = gtk_label_new("🔊");
+    gtk_widget_set_tooltip_text(self->icon_volume, _("Volume"));
+    gtk_box_pack_start(GTK_BOX(volume_row), self->icon_volume, FALSE, FALSE, 0);
 
     self->progress_volume = gtk_scale_new_with_range(
         GTK_ORIENTATION_HORIZONTAL, 0.0, 1.0, 0.01);
@@ -333,6 +334,21 @@ void AudioControlWidget::run_playerctl(const char* command) {
 
 void AudioControlWidget::set_language(const std::string& lang) {
     language = lang;
+
+    if (lbl_heading)
+        gtk_label_set_text(GTK_LABEL(lbl_heading), _("Audio Control"));
+
+    if (btn_prev)
+        gtk_widget_set_tooltip_text(btn_prev, _("Previous track"));
+    if (btn_play_pause)
+        gtk_widget_set_tooltip_text(btn_play_pause, _("Play or pause"));
+    if (btn_stop)
+        gtk_widget_set_tooltip_text(btn_stop, _("Stop playback"));
+    if (btn_next)
+        gtk_widget_set_tooltip_text(btn_next, _("Next track"));
+    if (icon_volume)
+        gtk_widget_set_tooltip_text(icon_volume, _("Volume"));
+
     last_title.clear();
     update();
 }
@@ -413,7 +429,7 @@ void AudioControlWidget::update() {
     const std::string artist = field(2);
     const std::string album = field(3);
 
-    set_label(lbl_song, last_title, title.empty() ? "Nessun brano" : title);
+    set_label(lbl_song, last_title, title.empty() ? _("No track") : title);
     set_label(lbl_artist, last_artist, artist);
     set_label(lbl_album, last_album, album);
 

@@ -12,7 +12,7 @@ struct NewsItem {
     std::string time;
     std::string url;
 };
-
+ 
 class NewsWidget {
 public:
     struct SharedState;

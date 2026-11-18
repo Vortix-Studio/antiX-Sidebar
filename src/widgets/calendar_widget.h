@@ -19,7 +19,7 @@ public:
         bool has_time = false;  // DTSTART con orario (T...)
     };
 
-    static CalendarWidget* create();
+    static CalendarWidget* create(); 
 
     GtkWidget* get_widget() const { return container; }
     GtkWidget* get_container() const { return container; }
@@ -42,6 +42,7 @@ private:
     static void on_refresh_clicked(GtkButton*, gpointer data);
     static void on_calendars_clicked(GtkButton*, gpointer data);
     static void on_add_calendar_clicked(GtkButton*, gpointer data);
+    static void on_add_source_clicked(GtkButton*, gpointer data);
     static void on_remove_source_clicked(GtkButton*, gpointer data);
     static void on_rename_source_clicked(GtkButton*, gpointer data);
     static gboolean on_grid_draw(GtkWidget*, cairo_t*, gpointer data);
@@ -62,7 +63,9 @@ private:
     GtkWidget* btn_next = nullptr;
     GtkWidget* btn_today = nullptr;
     GtkWidget* btn_refresh = nullptr;
+    GtkWidget* btn_calendars = nullptr;
     GtkWidget* lbl_month = nullptr;
+    GtkWidget* lbl_hint = nullptr;
     GtkWidget* grid = nullptr; // sostituisce GtkCalendar
 
     // Mese visibile e giorno selezionato (0 = nessuno)

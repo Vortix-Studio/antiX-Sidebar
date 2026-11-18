@@ -4,7 +4,7 @@
 #include "weather_widget.h"
 #include "news_widget.h"
 #include "theme_manager.h"
-#include <libintl.h>
+#include "i18n.h"
 
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
@@ -39,21 +39,36 @@ static int safe_stoi(const std::string& s, int fallback = 0)
 // Locale / gettext
 // ═══════════════════════════════════════════════════════════════════════════
 
+// Contatore interno di glibc per invalidare la cache dei cataloghi gettext
+// quando si cambia LANGUAGE a runtime.
+#if defined(__GLIBC__)
+extern "C" int _nl_msg_cat_cntr;
+#endif
+
 static void set_locale(const std::string& lang)
 {
     static bool initialized = false;
 
     if (!initialized) {
-        bindtextdomain("antix-sidebar", "/usr/share/locale");
-        bind_textdomain_codeset("antix-sidebar", "UTF-8");
-        textdomain("antix-sidebar");
+        std::string locdir = get_effective_localedir();
+        bindtextdomain(ANTIX_GETTEXT_DOMAIN, locdir.c_str());
+        bind_textdomain_codeset(ANTIX_GETTEXT_DOMAIN, "UTF-8");
+        textdomain(ANTIX_GETTEXT_DOMAIN);
         initialized = true;
     }
 
-    // LANGUAGE guida la scelta dei cataloghi gettext; il setlocale
-    // successivo fa sì che i testi già tradotti vengano ricaricati.
+    // Se LC_ALL o LC_MESSAGES è impostato su "C" o "POSIX", GNU gettext ignora $LANGUAGE.
+    // Garantiamo che non blocchi la selezione della lingua.
+    unsetenv("LC_ALL");
+
+    // LANGUAGE guida la scelta dei cataloghi gettext.
     setenv("LANGUAGE", lang.c_str(), 1);
+    setlocale(LC_MESSAGES, "");
     setlocale(LC_ALL, "");
+
+#if defined(__GLIBC__)
+    ++_nl_msg_cat_cntr;
+#endif
 }
 
 // ═══════════════════════════════════════════════════════════════════════════

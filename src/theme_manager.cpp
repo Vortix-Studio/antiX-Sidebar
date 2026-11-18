@@ -345,17 +345,22 @@ std::string ThemeManager::current_language()
 
     std::string code(lang);
 
+    // Rimuove il suffisso di codifica (es. "it_IT.UTF-8" -> "it_IT")
     const size_t dot = code.find('.');
     if (dot != std::string::npos)
         code.resize(dot);
 
+    // Prima prova il codice completo (es. "pt_BR"), poi solo la lingua ("pt")
+    static const std::vector<std::string> supported = {
+        "it", "fr", "de", "es", "pt", "nl", "pl", "ru", "uk", "ja"
+    };
+
+    if (std::find(supported.begin(), supported.end(), code) != supported.end())
+        return code;
+
     const size_t underscore = code.find('_');
     if (underscore != std::string::npos)
         code.resize(underscore);
-
-    static const std::vector<std::string> supported = {
-        "it", "fr", "de", "es", "pt", "nl", "pl", "ru"
-    };
 
     if (std::find(supported.begin(), supported.end(), code) != supported.end())
         return code;

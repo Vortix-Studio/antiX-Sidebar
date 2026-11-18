@@ -12,6 +12,7 @@
 
 #include "sidebar.h"
 #include "theme_manager.h"
+#include "i18n.h"
 
 #ifndef LOCALEDIR
 #define LOCALEDIR "/usr/share/locale"
@@ -72,11 +73,8 @@ int main(int argc, char* argv[])
     setenv("GTK_OVERLAY_SCROLLING", "0", 0);
 
     setlocale(LC_ALL, "");
-    bindtextdomain(
-        ANTIX_GETTEXT_DOMAIN,
-        g_getenv("ANTIX_SIDEBAR_LOCALEDIR")
-            ? g_getenv("ANTIX_SIDEBAR_LOCALEDIR")
-            : LOCALEDIR);
+    std::string locdir = get_effective_localedir();
+    bindtextdomain(ANTIX_GETTEXT_DOMAIN, locdir.c_str());
     bind_textdomain_codeset(ANTIX_GETTEXT_DOMAIN, "UTF-8");
     textdomain(ANTIX_GETTEXT_DOMAIN);
 
